@@ -1,0 +1,19 @@
+{
+  "name": "nasa-for-youth",
+  "version": "1.0.0",
+  "description": "nasa collaboration tools",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon.git"
+  },
+  "author": "zurab kobaladze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon/issues"
+  },
+  "homepage": "https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon#readme"
+}
