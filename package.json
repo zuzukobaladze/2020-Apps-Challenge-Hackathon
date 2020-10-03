@@ -4,7 +4,7 @@
   "description": "nasa collaboration tools",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,26 @@
   "bugs": {
     "url": "https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon/issues"
   },
-  "homepage": "https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon#readme"
+  "homepage": "https://github.com/zuzukobaladze/2020-Apps-Challenge-Hackathon#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.3",
+    "email-deep-validator": "^3.3.0",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "nanoid": "^3.1.12",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.4.11",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "save-dev": "0.0.1-security",
+    "sequelize": "^6.3.4",
+    "uuid": "^8.3.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
