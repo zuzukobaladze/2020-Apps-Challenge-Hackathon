@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@keyframes slideDown {
+    from {top: -50%}
+    to {top: 50%}
+}
+
+@keyframes slideDown2 {
+    from {top: 50%}
+    to {top: 100%}
+}
+
+@keyframes slideUp {
+    from {top: 50%}
+    to {top: -50%}
+}
+
+@keyframes slideUp2 {
+    from {top: -50%}
+    to {top: 50%}
+}
+
+:root {
+    --success-color: #0b3d91;
+    --error-color: #fc3d21;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://papers.co/wallpaper/papers.co-md65-star-dark-space-galaxy-23-wallpaper.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+.hole{
+    padding: 0;
+    margin: 0;
+    overflow:hidden;
+}
+
+.particle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.form {
+    padding: 30px 40px;
+}
+
+.container-signup {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    animation-name: slideDown;
+    animation-fill-mode: backwards;
+    animation-delay: 4s;
+    animation-duration: 6.3s;
+}
+
+.container-login {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    animation-name: slideDown;
+    animation-fill-mode: backwards;
+    animation-delay: 4s;
+    animation-duration: 6.3s;
+}
+
+h2 {
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.form-control, .form-control1 {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label, .form-control1 label {
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control input, .form-control1 input {
+    display: block;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control1 input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: var(--success-color);
+}
+
+.form-control1.success input {
+    border-color: var(--success-color);
+}
+
+.form-control.error input {
+    border-color: var(--error-color);
+}
+
+.form-control1.error input {
+    border-color: var(--error-color);
+}
+
+.form-control small {
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control1 small {
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form-control1.error small {
+    visibility: visible;
+}
+
+.form button {
+    cursor: pointer;
+    background-color: black;
+    border: 3.5px solid gray;
+    border-radius: 4px;
+    color: white;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.resize {
+    border-radius: 10px;
+    background-color: #fff;
+    float: right;
+    height: 25px;
+    width: auto;
+    margin-top: 10px;
+}

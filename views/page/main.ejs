@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NASA for the youth</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <section>
+            <div id="hole">
+                <canvas id="particle"></canvas>
+            </div>
+        </section>
+
+        <audio id="blackHoleSounds" src="/audio/background.mp3" controls autoplay loop></audio>
+
+        <div class="container-signup">
+            <form id="form-signup" class="form">
+                <h2>Register With Us</h2>
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input type="text" name="" id="username-signup" placeholder="Enter Username">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" name="" id="email-signup" placeholder="Enter Email">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="" id="password-signup" placeholder="Enter Password">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="" id="password2-signup" placeholder="Enter password again">
+                    <small>Error Message</small>
+                </div>
+                <button type="submit" id="btn-signup">Sign Up</button>
+                <button type="menu" id="btn-swap-toLog">Log In</button>
+            </form>
+        </div>
+
+        <div class="container-login">
+            <form id="form-login" class="form">
+                <h2>Join the jounrey</h2>
+                <div class="form-control1">
+                    <label for="email">Email</label>
+                    <input type="text" name="" id="email-login" placeholder="Enter Email">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control1">
+                    <label for="password">Password</label>
+                    <input type="password" name="" id="password-login" placeholder="Enter Password">
+                    <small>Error Message</small>
+                </div>
+                <button type="submit" id="btn-login">Log In</button>
+                <a href="/signup">Sign Up</a>
+            </form>
+        </div>
+
+        <script src="/js/styleFunction.js"></script>
+    </body>
+</html>
