@@ -1,0 +1,186 @@
+/*==================================================
+  Pnotify
+==================================================== */
+/* -- Notice */
+.ui-pnotify {
+  top: 25px;
+  right: 25px;
+  position: absolute;
+  height: auto;
+  /* Ensures notices are above everything */
+  z-index: 9999;
+}
+.ui-pnotify .alert {
+  border-radius: 0;
+}
+/* Hides position: fixed from IE6 */
+html > body > .ui-pnotify {
+  position: fixed;
+}
+.ui-pnotify .ui-pnotify-shadow {
+  -webkit-box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+  box-shadow: 0px 2px 10px rgba(50, 50, 50, 0.5);
+}
+.ui-pnotify-container {
+  background-position: 0 0;
+  padding: .8em;
+  height: 100%;
+  margin: 0;
+}
+.ui-pnotify-sharp {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.ui-pnotify-title {
+  display: block;
+  margin-bottom: .4em;
+  margin-top: 0;
+}
+.ui-pnotify-text {
+  display: block;
+}
+.ui-pnotify-icon,
+.ui-pnotify-icon span {
+  display: block;
+  float: left;
+  margin-right: .2em;
+}
+/* Alternate stack initial positioning. */
+.ui-pnotify.stack_top_left,
+.ui-pnotify.stack_bottom_left {
+  left: 15px;
+  right: auto;
+}
+.ui-pnotify.stack_bottom_right,
+.ui-pnotify.stack_bottom_left {
+  bottom: 25px;
+  right: 8px;
+  top: auto;
+}
+.ui-pnotify.stack_bottom_right {
+  right: 12px;
+}
+.ui-pnotify-closer,
+.ui-pnotify-sticker {
+  float: right;
+  margin-left: .2em;
+}
+.ui-pnotify.stack_bar_top {
+  right: 0;
+  top: 0;
+  width: 100%;
+  border-radius: 0;
+}
+.ui-pnotify.stack_bar_top .alert {
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+}
+.ui-pnotify.stack_bar_bottom {
+  right: auto;
+  top: auto;
+  left: auto;
+  margin-left: 15%;
+  bottom: 0;
+  border-radius: 0;
+}
+/*wrapper */
+.ui-pnotify {
+  top: 70px;
+  right: 8px;
+}
+/*with icon*/
+.ui-pnotify-icon,
+.ui-pnotify-icon span {
+  font-size: 30px;
+  min-height: 40px;
+  line-height: 40px;
+  padding-right: 3px;
+}
+
+/*==================================================
+  Alerts
+==================================================== */
+.alert {
+  color: #ffffff;
+  font-size: 14px;
+  padding: 15px;
+  margin-bottom: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+}
+.alert .close {
+  color: #666666;
+}
+.alert .close:hover {
+  color: #666666;
+}
+.alert hr {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  color: #ffffff;
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert.alert-micro,
+.alert .alert-sm {
+  font-size: 13px;
+  padding: 9px 35px 9px 9px;
+  border-radius: 0;
+}
+.alert.alert-sm {
+  padding: 12px 35px 12px 12px;
+}
+.alert.alert-border {
+  border: 1px solid transparent;
+}
+.alert.alert-border-right {
+  border-right-width: 6px;
+}
+.alert.alert-border-top {
+  border-top-width: 3px;
+}
+.alert.alert-border-bottom {
+  border-bottom-width: 3px;
+}
+.alert.alert-border-left {
+  padding-left: 15px;
+  border-left-width: 6px;
+}
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px;
+}
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  right: -21px;
+  color: #FFF;
+  opacity: 0.3;
+}
+.alert-dismissable .close:hover,
+.alert-dismissible .close:hover {
+  color: #FFF;
+  opacity: 1;
+}
+
+.alert-success {
+  background-color: #8cd481;
+}
+
+.alert-danger {
+  background-color: #f34040;
+}

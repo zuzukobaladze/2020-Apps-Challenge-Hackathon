@@ -1,0 +1,26 @@
+<% if(typeof errors != 'undefined') { %>
+    <% errors.forEach((error)=>{ %>
+        <div class="alert warning">
+                <span class="closebtn">&times;</span>  
+                <strong>Warning!</strong>  <%= error.msg %>
+        </div>
+    <% }); %>
+<% } %>
+
+<% if(success_msg != '') { %>
+<script>
+  showNotification('success', 'success' , '<%= success_msg %>'); 
+</script>
+<% } %>
+
+<% if(error_msg != '') { %>
+  <script>
+    showNotification('danger', 'error' , '<%= error_msg %>'); 
+  </script>
+<% } %> 
+
+<% if(error != '') { %>
+  <script>
+    showNotification('danger', 'error' , '<%= error %>'); 
+  </script>
+<% } %> 

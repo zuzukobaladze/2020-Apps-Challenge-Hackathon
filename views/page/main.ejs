@@ -3,6 +3,7 @@
     <head>
         <title>NASA for the youth</title>
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/Pnotify.css">
     </head>
     <body>
         <section>
@@ -14,7 +15,7 @@
         <audio id="blackHoleSounds" src="/audio/background.mp3" controls autoplay loop></audio>
 
         <div class="container-login">
-            <form id="form-login" class="form">
+            <form id="form-login" class="form" action="/" method="POST">
                 <h2>Join the jounrey</h2>
                 <div class="form-control1">
                     <label for="email">Email</label>
@@ -32,5 +33,85 @@
         </div>
 
         <script src="/js/styleFunction.js"></script>
+          <!-- jQuery -->
+        <script src="/js/jquery/jquery-1.11.1.min.js"></script>
+        <script src="/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+        <!-- PNotify -->
+        <script src="/js/pnotify/pnotify.js"></script>
+
+        <script type="text/javascript">
+    
+    /* Notification Block start */
+    var Stacks = {
+        stack_top_right: {
+            "dir1": "down",
+            "dir2": "left",
+            "push": "top",
+            "spacing1": 10,
+            "spacing2": 10
+        },
+        stack_bar_top: {
+            "dir1": "down",
+            "dir2": "right",
+            "push": "top",
+            "spacing1": 0,
+            "spacing2": 0
+        },
+        stack_bar_bottom: {
+            "dir1": "up", 
+            "dir2": "right", 
+            "spacing1": 0, 
+            "spacing2": 0
+            },
+        stack_context: {
+            "dir1": "down",
+            "dir2": "left",
+            "context": $("#stack-context")
+        }
+        }
+    
+    // PNotify Plugin Event Init
+    showNotification = (status, title, text) => {
+        var noteStyle = status; //danger
+        var noteShadow = true;
+        var noteOpacity; //'0.75'
+        var noteStack = 'stack_bar_top';
+        var width = "290px";
+
+        // If notification stack or opacity is not defined set a default
+        var noteStack = noteStack ? noteStack : "stack_bar_bottom";
+        var noteOpacity = noteOpacity ? noteOpacity : "1";
+
+            // We modify the width option if the selected stack is a fullwidth style
+            function findWidth() {
+                if (noteStack == "stack_bar_top") {
+                return "100%";
+                }
+                if (noteStack == "stack_bar_bottom") {
+                return "70%";
+                } else {
+                return "290px";
+                }
+            }
+
+            // Create new Notification
+            new PNotify({
+                title: title,
+                text: text,
+                shadow: noteShadow,
+                opacity: noteOpacity,
+                addclass: noteStack,
+                type: noteStyle,
+                stack: Stacks[noteStack],
+                width: findWidth(),
+                hide: false
+            });
+
+        }
+      /* Notification Block End */
+        </script>
+
+    <%- include('./../partials/messages.ejs') %>
+
     </body>
 </html>

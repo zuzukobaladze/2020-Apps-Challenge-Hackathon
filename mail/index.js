@@ -3,15 +3,13 @@ const ejs = require('ejs');
 
 module.exports = (userEmail,applicantName) =>{
     const transporter = nodemailer.createTransport({
-        host: 'mail.airnav.ge',
-        port: '25',
-        secure: false,
+        service: 'gmail',
+        host: 'smtp.gmail.com',
+        //port: '587',
+        //secure: false,
         auth: {
-            user: 'ts.margvelashvili@airnav.ge',
-            pass: 'tsotne1214'
-        },
-        tls: {
-            rejectUnauthorized: false //do not fail on invalid certs
+            user: '2020spaceappsNASA@gmail.com',
+            pass: 'nonadatagabrieli'
         }
     });
 
@@ -19,7 +17,7 @@ module.exports = (userEmail,applicantName) =>{
         //console.log(str);
 
         const mailOptions = {
-            from: 'ts.margvelashvili@airnav.ge',
+            from: '2020spaceappsNASA@gmail.com',
             to: userEmail,
             subject: 'NetDev - Registration Page',
             html: str
