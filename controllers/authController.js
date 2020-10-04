@@ -5,7 +5,7 @@ exports.signup = async (req, res) => {
     try {
         const { formData } = req.body;
         const obj = await JSON.parse(formData);
-        console.log(formData)
+        console.log(obj)
         const newUser = await LegalUser.create({
             username: obj.username,
             mail: obj.email,
