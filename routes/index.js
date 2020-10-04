@@ -44,7 +44,7 @@ router.post("/signup", authController.signup);
 
 //account
 router.get('/account', (req, res) => {
-    res.render('page/signup')
+    res.render('page/account')
 })
 
 module.exports = router;
