@@ -3,7 +3,7 @@ const db = require('../../config/database');
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 
-const LegalUser = db.define('legalUser',{
+const User = db.define('User',{
     username: {
         type: Sequelize.STRING,
         allowNull: false
@@ -16,6 +16,10 @@ const LegalUser = db.define('legalUser',{
                 args: true,
                 msg: 'please insert correct email address'
             }
+        },
+        unique: { 
+            args: true,
+            msg: 'You are already registered !!' 
         }
     },
     password: {
@@ -50,7 +54,7 @@ const LegalUser = db.define('legalUser',{
     timestamps: false
 });
 
-LegalUser.addHook('beforeCreate', async (user, options) => {
+User.addHook('beforeCreate', async (user, options) => {
     var hashPassword = await bcrypt.hash(user.password,10);
     user.password = hashPassword;
     var MY_NAMESPACE = "16b71a64-491e-da01ff1f3341";
@@ -59,4 +63,4 @@ LegalUser.addHook('beforeCreate', async (user, options) => {
     console.log(user);
 });
 
-module.exports = LegalUser;
+module.exports = User;

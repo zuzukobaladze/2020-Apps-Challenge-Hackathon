@@ -1,12 +1,19 @@
 const express = require('express');
-const db = require('./config/database');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
+const db = require('./config/database');
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
+
 const app = express();
+
 
 //sequelize
 db.authenticate()
@@ -55,6 +62,12 @@ app.use(cookieParser());
 
 //Routes
 app.use('/',require('./routes/index'));
+
+app.all('*', (req,res,next) => {
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+})
+
+app.use(globalErrorHandler);
 
 const PORT = process.env.PORT || 80;
 

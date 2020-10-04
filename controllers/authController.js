@@ -1,8 +1,11 @@
-const LegalUser = require('../models/user/legalUser');
+const LegalUser = require('../models/user/User');
 const sendEmail = require("./../mail");
 
-exports.signup = async (req, res) => {
-    try {
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('../utils/appError');
+
+exports.signup = catchAsync(async (req, res, next) => {
+
         const { formData } = req.body;
         const obj = await JSON.parse(formData);
         
@@ -17,14 +20,4 @@ exports.signup = async (req, res) => {
         //sendEmail(obj.email, 'activate',userID);
         req.flash("success_msg", 'User Success Register');
         res.status(200).send({info: 'redirect', url:'/'});
-    } catch (error) {
-        console.log(error)
-        //text = registrationFunction.generateErorr(req.cookies.lenguage,'userIsRegistered');
-        const errors = error.errors.map((el) => {
-            return { msg: `Field ${el.path} not correct - ${el.message}` }
-        });
-        //errors.push({ msg: error.dataValues });
-        res.send({info: errors});
-    }
-
-}
+});

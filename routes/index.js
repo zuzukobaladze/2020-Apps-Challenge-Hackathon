@@ -42,4 +42,9 @@ router.get('/signup', (req, res) => {
 
 router.post("/signup", authController.signup);
 
+//account
+router.get('/account', (req, res) => {
+    res.render('page/signup')
+})
+
 module.exports = router;
