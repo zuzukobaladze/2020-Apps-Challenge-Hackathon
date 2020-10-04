@@ -7,20 +7,10 @@ exports.signup = async (req, res) => {
         const obj = await JSON.parse(formData);
         console.log(formData)
         const newUser = await LegalUser.create({
-            userid: obj.userid,
-            name: obj.firstname,
-            lastname: obj.lastname,
-            privateid: obj.privateID,
+            username: obj.username,
             mail: obj.email,
-            birthdate: obj.birthDate,
             password: obj.password,
-            confirmPassword: obj.confirmPassword,
-            mobile: obj.mobile,
-            gender: obj.gender,
-            city: obj.city,
-            address: obj.address,
-            smscode: obj.smscode,
-            useractivate: obj.userActivate
+            confirmPassword: obj.confirmPassword
         }); 
     
         //sendEmail(obj.email, 'activate',userID);

@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const uuidv4 = require("uuid");
 
 const LegalUser = db.define('legalUser',{
-    name: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false
     },
