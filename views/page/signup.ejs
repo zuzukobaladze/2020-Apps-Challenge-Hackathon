@@ -3,6 +3,7 @@
     <head>
         <title>NASA for the youth</title>
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/Pnotify.css">
     </head>
     <body>
         <section>
@@ -14,33 +15,181 @@
         <audio id="blackHoleSounds" src="/audio/background.mp3" controls autoplay loop></audio>
 
         <div class="container-signup">
-            <form id="form-signup" class="form">
+            <form id="form-signup" class="form" method="POST" action="/signup">
                 <h2>Register With Us</h2>
                 <div class="form-control">
                     <label for="username">Username</label>
-                    <input type="text" name="" id="username-signup" placeholder="Enter Username">
+                    <input type="text" name="" id="username-signup" placeholder="Enter Username" required>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label for="email">Email</label>
-                    <input type="text" name="" id="email-signup" placeholder="Enter Email">
+                    <input type="text" name="" id="email-signup" placeholder="Enter Email" required>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label for="password">Password</label>
-                    <input type="password" name="" id="password-signup" placeholder="Enter Password">
+                    <input type="password" name="" id="password-signup" placeholder="Enter Password" required>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label for="password2">Confirm Password</label>
-                    <input type="password" name="" id="password2-signup" placeholder="Enter password again">
+                    <input type="password" name="" id="password2-signup" placeholder="Enter password again" required>
                     <small>Error Message</small>
                 </div>
-                <button type="submit" id="btn-signup">Sign Up</button>
-                <a href="/signup" class="btn-sign"><button type="button">Log In</button></a>
+                <button onclick="userRegister()" id="btn-signup">Sign Up</button>
+                <a href="/" class="btn-sign"><button type="button">Log In</button></a>
             </form>
         </div>
 
         <script src="/js/styleFunction.js"></script>
+        <script src="/js/jquery/jquery-1.11.1.min.js"></script>
+        <script src="/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+        <!-- PNotify -->
+        <script src="/js/pnotify/pnotify.js"></script>
+
+
+        <script>
+
+
+    /* Notification Block start */
+    var Stacks = {
+        stack_top_right: {
+            "dir1": "down",
+            "dir2": "left",
+            "push": "top",
+            "spacing1": 10,
+            "spacing2": 10
+        },
+        stack_bar_top: {
+            "dir1": "down",
+            "dir2": "right",
+            "push": "top",
+            "spacing1": 0,
+            "spacing2": 0
+        },
+        stack_bar_bottom: {
+            "dir1": "up", 
+            "dir2": "right", 
+            "spacing1": 0, 
+            "spacing2": 0
+            },
+        stack_context: {
+            "dir1": "down",
+            "dir2": "left",
+            "context": $("#stack-context")
+        }
+        }
+    
+    // PNotify Plugin Event Init
+    showNotification = (status, title, text) => {
+        var noteStyle = status; //danger
+        var noteShadow = true;
+        var noteOpacity; //'0.75'
+        var noteStack = 'stack_bar_top';
+        var width = "290px";
+
+        // If notification stack or opacity is not defined set a default
+        var noteStack = noteStack ? noteStack : "stack_bar_bottom";
+        var noteOpacity = noteOpacity ? noteOpacity : "1";
+
+            // We modify the width option if the selected stack is a fullwidth style
+            function findWidth() {
+                if (noteStack == "stack_bar_top") {
+                return "100%";
+                }
+                if (noteStack == "stack_bar_bottom") {
+                return "70%";
+                } else {
+                return "290px";
+                }
+            }
+
+            // Create new Notification
+            new PNotify({
+                title: title,
+                text: text,
+                shadow: noteShadow,
+                opacity: noteOpacity,
+                addclass: noteStack,
+                type: noteStyle,
+                stack: Stacks[noteStack],
+                width: findWidth(),
+                hide: false
+            });
+
+        }
+      /* Notification Block End */
+
+    //legal user register function
+      var userRegister = async () => {
+        $("#form-signup").validate({
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          rules: {
+            mobile: {
+              required: true,
+              digits: true
+            }
+          },
+          messages: {
+            mobile: {
+              required: 'Enter Mobile',
+              digits: "Please enter only numbers"
+            }
+          },
+          highlight: function(element, errorClass, validClass) {
+            $(element).closest('.field').addClass(errorClass).removeClass(validClass);
+          },
+          unhighlight: function(element, errorClass, validClass) {
+            $(element).closest('.field').removeClass(errorClass).addClass(validClass);
+          },
+          errorPlacement: function(error, element) {
+            if (element.is(":radio") || element.is(":checkbox")) {
+              element.closest('.option-group').after(error);
+            } else {
+              error.insertAfter(element.parent());
+            }
+          }
+        });
+
+            if($("#form-signup").valid()){
+            var formData = {};
+                //$.postJSON( "/account/stockDrone", formData );
+                var data = await JSON.stringify( $('#form-signup').serializeArray().map(function(item) {
+                    if ( formData[item.name] ) {
+                        if ( typeof(formData[item.name]) === "string" ) {
+                            formData[item.name] = [formData[item.name]];
+                        }
+                        formData[item.name].push(item.value);
+                    } else {
+                        formData[item.name] = item.value;
+                    }
+                })); //  <-----------
+                formData.userStatus = 'Legal';
+
+                $.ajax({
+                    type: "POST",
+                    url: '/signup',
+                    data: {"formData" : JSON.stringify(formData)},
+                    cache: false,
+                    success: function(result){
+                    if(result.info == 'redirect'){
+                        window.location.replace(result.url);
+                        }else{
+                        //$("#form-survey1")[0].reset();
+                        for (const element of result.info) {
+                            showNotification('danger', 'Error' , element.msg); 
+                        } 
+                        }
+                    }
+                });
+            }
+        }
+        </script>
+
+
+
     </body>
 </html>

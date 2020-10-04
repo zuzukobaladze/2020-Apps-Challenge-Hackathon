@@ -15,7 +15,7 @@ exports.signup = async (req, res) => {
     
         //sendEmail(obj.email, 'activate',userID);
         req.flash("success_msg", 'User Success Register');
-        res.status(200).send({info: 'redirect', url:'/users/login'});
+        res.status(200).send({info: 'redirect', url:'/'});
     } catch (error) {
         //text = registrationFunction.generateErorr(req.cookies.lenguage,'userIsRegistered');
         const errors = error.errors.map((el) => {
