@@ -4,6 +4,7 @@ const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 const app = express();
 
@@ -13,6 +14,9 @@ db.authenticate()
 .catch(err => console.log('Error: ' + err));
 
 db.sync();
+
+//passport config
+require('./config/passport')(passport);
 
 //EJS
 app.use(expressLayouts);
@@ -27,6 +31,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Connect to Flash
 app.use(flash());
