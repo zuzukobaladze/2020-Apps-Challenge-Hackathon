@@ -101,19 +101,19 @@ h2 {
     margin: 0 0 20px;
 }
 
-.form-control, .form-control1 {
+.form-control {
     margin-bottom: 10px;
     padding-bottom: 20px;
     position: relative;
 }
 
-.form-control label, .form-control1 label {
+.form-control label {
     color: #777;
     display: block;
     margin-bottom: 5px;
 }
 
-.form-control input, .form-control1 input {
+.form-control input {
     display: block;
     border: 2px solid #f0f0f0;
     border-radius: 4px;
@@ -127,24 +127,11 @@ h2 {
     border-color: #777;
 }
 
-.form-control1 input:focus {
-    outline: 0;
-    border-color: #777;
-}
-
 .form-control.success input {
     border-color: var(--success-color);
 }
 
-.form-control1.success input {
-    border-color: var(--success-color);
-}
-
 .form-control.error input {
-    border-color: var(--error-color);
-}
-
-.form-control1.error input {
     border-color: var(--error-color);
 }
 
