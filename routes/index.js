@@ -6,6 +6,7 @@ const sendEmailPrivate = require("./../mail/private");
 const EmailValidator = require("email-deep-validator");
 const { v4:uuidv4 } = require('uuid');
 const passport = require('passport');
+const { ensureAuthenticated } = require('../config/auth');
 const express =  require('express');
 const router = express.Router();
 
@@ -43,7 +44,7 @@ router.get('/signup', (req, res) => {
 router.post("/signup", authController.signup);
 
 //account
-router.get('/account', (req, res) => {
+router.get('/account',  ensureAuthenticated, (req, res) => {
     res.render('page/account')
 })
 
