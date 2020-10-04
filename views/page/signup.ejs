@@ -43,8 +43,7 @@
         </div>
 
         <script src="/js/styleFunction.js"></script>
-        <script src="/js/jquery/jquery-1.11.1.min.js"></script>
-        <script src="/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- jQuery Validate Plugin-->
         <script src="/js/jquery/jquery.validate.min.js"></script>
         <!-- PNotify -->
@@ -140,7 +139,7 @@
                     }
                 })); //  <-----------
                 formData.userStatus = 'Legal';
-                console.log(formData)
+               
                 $.ajax({
                     type: "POST",
                     url: '/signup',
@@ -153,6 +152,7 @@
                         }else{
                         //$("#form-survey1")[0].reset();
                         for (const element of result.info) {
+                            console.log(result);
                             showNotification('danger', 'Error' , element.msg); 
                         } 
                         }

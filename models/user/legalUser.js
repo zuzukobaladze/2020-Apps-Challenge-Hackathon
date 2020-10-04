@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../../config/database');
 const bcrypt = require("bcryptjs");
-const uuidv4 = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 
 const LegalUser = db.define('legalUser',{
     username: {
@@ -41,9 +41,6 @@ const LegalUser = db.define('legalUser',{
     userid: {
         type: Sequelize.STRING
     },
-    smscode: {
-        type: Sequelize.STRING
-    },
     useractivate: {
         type: Sequelize.BOOLEAN,
         defaultValue: true
@@ -59,9 +56,7 @@ LegalUser.addHook('beforeCreate', async (user, options) => {
     var MY_NAMESPACE = "16b71a64-491e-da01ff1f3341";
     const userID = uuidv4(MY_NAMESPACE);
     user.userid = userID;
-    const generate = require("nanoid/generate");
-    smsCode = generate("1234567890abcdef", 5);
-    user.smscode = smsCode;
+    console.log(user);
 });
 
 module.exports = LegalUser;
