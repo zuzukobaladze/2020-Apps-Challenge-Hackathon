@@ -34,7 +34,7 @@ router.post('/',(req,res, next)=>{
 router.get('/logout', (req, res)=>{
   req.logOut();
   req.flash('success_msg','You are Logged out');
-  res.redirect('login');
+  res.redirect('/');
 });
 
 router.get('/signup', (req, res) => {
